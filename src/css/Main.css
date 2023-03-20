@@ -1,6 +1,7 @@
 .App {
   text-align: left;
   box-sizing: border-box;
+  background: #f2f2f2;
 }
 
 .App-header {
@@ -22,8 +23,55 @@
   padding: 10px;
 }
 
-.my-button {
+.counter-button {
   background-color: aliceblue;
   color: black;
 }
 
+.searchForm-input {
+  background: rgba(50, 50, 50, 0.8);
+  mix-blend-mode: normal;
+  opacity: 0.7;
+  border-radius: 4px;
+}
+
+.searchForm-button {
+  background: #f65261;
+  border-radius: 4px;
+}
+
+.searchForm-title {
+  width: 392px;
+  height: 49px;
+  left: 178px;
+  top: 155px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 49px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.genreSelect-title {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.888889px;
+  text-transform: uppercase;
+  color: #f65261;
+  mix-blend-mode: normal;
+  opacity: 0.8;
+}
+
+.genreSelect-select {
+  background: rgba(50, 50, 50, 0.948044);
+  mix-blend-mode: normal;
+  opacity: 0.8;
+  border-radius: 4px;
+}

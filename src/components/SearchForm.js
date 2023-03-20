@@ -1,21 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 
-function SearchForm(props) {
-    const [query, setQuery] = useState(props.searchQuery);
+class SearchForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { query: props.searchQuery };
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ query: event.target.value });
+  }
+
+  handleKeyDown(event) {
+    if (event.key === "Enter") {
+      this.props.onSearch(this.state.query);
+    }
+  }
+
+  render() {
     return (
-        <div>
-            <h1>FIND YOUR MOVIE</h1>
-            <input 
-                type="search" 
-                placeholder="What do you want to watch?" 
-                size="30" 
-                value={query}  
-                onChange={e => setQuery(e.target.value)}
-                onFocus={props.onSearch(query)}></input>
-            <button onClick={props.onSearch(query)}>Search</button>
-        </div>
-    )
+      <form onSubmit={this.props.onSearch(this.state.query)}>
+        <p className="searchForm-title">FIND YOUR MOVIE</p>
+        <input
+          className="searchForm-input"
+          type="search"
+          placeholder="What do you want to watch?"
+          value={this.state.query}
+          onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+        />
+        <input className="searchForm-button" type="submit" value="Search" />
+      </form>
+    );
+  }
 }
 
 export default SearchForm;
