@@ -56,22 +56,34 @@
   color: #ffffff;
 }
 
-.genreSelect-title {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.888889px;
-  text-transform: uppercase;
-  color: #f65261;
-  mix-blend-mode: normal;
-  opacity: 0.8;
+.genreSelect-ul {
+  margin-top: 30px;
+  background: #232323;
+  border: 1px solid #979797;
 }
 
-.genreSelect-select {
-  background: rgba(50, 50, 50, 0.948044);
-  mix-blend-mode: normal;
-  opacity: 0.8;
-  border-radius: 4px;
+.genreSelect-li {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline;
+  margin-left: 3px;
+}
+
+.genreSelect-li.active {
+  background-color: #23C9FF;
+  border: 1px solid #5EB2F2;
+  color: #FFF;
+}
+
+.selected {
+  background: #f65261;
+}
+
+li {
+  cursor: pointer;
 }

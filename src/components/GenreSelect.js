@@ -3,36 +3,48 @@ import React from "react";
 class GenreSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      genre: "",
-    };
 
-    this.selectGenre = this.selectGenre.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  selectGenre(event) {
-    this.props.onSelect(event.target.value);
+    this.onClick = this.onClick.bind(this);
+    this.singleSelect = this.singleSelect.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ genre: event.target.value });
+    this.props.onSelect(event.target.value);
+  }
+
+  onClick(event) {
+    if (event.target.tagName !== "LI") {
+      return;
+    } 
+   
+    this.singleSelect(event.target);
+  }
+
+  singleSelect(li) {
+    let ul = document.getElementById('ul');
+    let selected = ul.querySelectorAll('.selected');
+    for(let elem of selected) {
+      elem.classList.remove('selected');
+    }
+    li.classList.add('selected');
   }
 
   render() {
     return (
       <div>
-        <p className="genreSelect-title">GENRE</p>
-        <select
-          className="genreSelect-select"
-          onSelect={this.selectGenre}
-          value={this.state.genre}
-          onChange={this.handleChange}
+        <ul
+          className="genreSelect-ul"
+          id="ul"
+          value={this.props.genre}
+          onClick={this.handleChange}
         >
           {this.props.genres.map((genre) => (
-            <option key={genre.id} value={genre.name}>{genre.name}</option>
+            <li key={genre.id} value={genre.id} className="genreSelect-li" onClick={this.onClick}>
+              {genre.name}
+            </li>
           ))}
-        </select>
+        </ul>
       </div>
     );
   }

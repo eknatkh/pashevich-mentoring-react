@@ -8,9 +8,11 @@ function App() {
   const [querySearch, setQuerySearch] = useState("");
   const [genre, setGenre] = useState("");
   const [genres, setGenres] = useState([
-    { id: 1, name: "comedy" },
-    { id: 2, name: "thriller" },
-    { id: 3, name: "drama" },
+    { id: 1, name: "ALL" },
+    { id: 2, name: "DOCUMENTARY" },
+    { id: 3, name: "COMEDY" },
+    { id: 4, name: "HORROR" },
+    { id: 5, name: "CRIME" },
   ]);
 
   const searchMovie = (querySearch) => {
@@ -20,7 +22,7 @@ function App() {
 
   const selectGenre = (genre) => {
     setGenre(genre);
-    console.log("genre = " + this.state.genre);
+    console.log("genre = " + genre);
   };
 
   return (
