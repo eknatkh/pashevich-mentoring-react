@@ -6,7 +6,7 @@ import "./css/Main.css";
 
 function App() {
   const [querySearch, setQuerySearch] = useState("");
-  const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState(3);
   const [genres, setGenres] = useState([
     { id: 1, name: "ALL" },
     { id: 2, name: "DOCUMENTARY" },

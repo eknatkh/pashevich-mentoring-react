@@ -3,10 +3,10 @@ import React from "react";
 class GenreSelect extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {previousValue : 0}
 
     this.handleChange = this.handleChange.bind(this);
     this.onClick = this.onClick.bind(this);
-    this.singleSelect = this.singleSelect.bind(this);
   }
 
   handleChange(event) {
@@ -18,16 +18,16 @@ class GenreSelect extends React.Component {
       return;
     } 
    
-    this.singleSelect(event.target);
-  }
-
-  singleSelect(li) {
-    let ul = document.getElementById('ul');
-    let selected = ul.querySelectorAll('.selected');
-    for(let elem of selected) {
-      elem.classList.remove('selected');
+    let value = event.target.value;
+    if (value !== this.state.previousValue) {
+      let ul = document.getElementById('ul');
+      let selected = ul.querySelectorAll('.selected');
+      for(let elem of selected) {
+          elem.classList.remove('selected');
+      }
     }
-    li.classList.add('selected');
+    this.setState({previousValue : event.target.value});
+    event.target.classList.toggle("selected");
   }
 
   render() {

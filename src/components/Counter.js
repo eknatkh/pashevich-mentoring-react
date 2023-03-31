@@ -26,7 +26,7 @@ class Counter extends React.Component {
       "div",
       { className: "counter-cmp" },
       React.createElement("h4", null, "Counter Component"),
-      React.createElement("p", null, this.state.count),
+      React.createElement("p", null, "Value: " + this.state.count),
       React.createElement(
         "button",
         { onClick: this.increment, className: "counter-button" },
