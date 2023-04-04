@@ -3,6 +3,7 @@ import { fireEvent, screen, render } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import SearchForm from "../components/SearchForm";
 import userEvent from "@testing-library/user-event";
+import { act } from 'react-dom/test-utils';
 
 describe("SearchFrom test", () => {
 
@@ -20,9 +21,11 @@ describe("SearchFrom test", () => {
     test("onChange is called after typing to the input and clicking submit", () => {
         render(<SearchForm searchQuery="" onSearch={onSearch} />);
         const input = screen.getByPlaceholderText(/What do you want to watch?/i);
-        userEvent.type(input, searchParams);
-        const button = screen.getByText(/Search/);
-        userEvent.click(button);
+        act (() => {
+            userEvent.type(input, searchParams);
+            const button = screen.getByText(/Search/);
+            userEvent.click(button);
+        });
 
         expect(onSearch).toHaveBeenCalled();
         expect(onSearch).toHaveBeenCalledWith(searchParams);
@@ -31,8 +34,10 @@ describe("SearchFrom test", () => {
     test("onChange is called after typing to the input and pressing Enter", () => {
         render(<SearchForm searchQuery="" onSearch={onSearch} />);
         const input = screen.getByPlaceholderText(/What do you want to watch?/i);
-        userEvent.type(input, searchParams);
-        fireEvent.keyPress(input, {key: "Enter", code: "Enter", charCode: 13});
+        act(() => {
+            userEvent.type(input, searchParams);
+            userEvent.type(input, "{enter}");
+        });
         expect(onSearch).toHaveBeenCalled();
         expect(onSearch).toHaveBeenCalledWith(searchParams);
     })

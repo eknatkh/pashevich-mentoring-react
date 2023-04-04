@@ -2,7 +2,6 @@ import React from "react";
 import { fireEvent, screen, render } from "@testing-library/react";
 import '@testing-library/jest-dom'
 import Counter from "../components/Counter";
-import { act } from 'react-dom/test-utils';
 
 describe('Counter test', () => {
 

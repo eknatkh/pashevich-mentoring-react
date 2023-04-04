@@ -6,7 +6,7 @@ import "./css/Main.css";
 
 function App() {
   const [querySearch, setQuerySearch] = useState("");
-  const [genre, setGenre] = useState(3);
+  const [genre, setGenre] = useState(1);
   const [genres, setGenres] = useState([
     { id: 1, name: "ALL" },
     { id: 2, name: "DOCUMENTARY" },
@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Counter />
-      <SearchForm searchQuery="search here" onSearch={searchMovie} />
+      <SearchForm searchQuery="" onSearch={searchMovie} />
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
     </div>
   );

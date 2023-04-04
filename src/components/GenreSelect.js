@@ -3,44 +3,22 @@ import React from "react";
 class GenreSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {previousValue : 0}
 
     this.handleChange = this.handleChange.bind(this);
-    this.onClick = this.onClick.bind(this);
   }
 
-  handleChange(event) {
-    this.props.onSelect(event.target.value);
-  }
-
-  onClick(event) {
-    if (event.target.tagName !== "LI") {
-      return;
-    } 
-   
-    let value = event.target.value;
-    if (value !== this.state.previousValue) {
-      let ul = document.getElementById('ul');
-      let selected = ul.querySelectorAll('.selected');
-      for(let elem of selected) {
-          elem.classList.remove('selected');
-      }
-    }
-    this.setState({previousValue : event.target.value});
-    event.target.classList.toggle("selected");
+  handleChange(genreId) {
+    this.props.onSelect(genreId);
   }
 
   render() {
     return (
       <div>
-        <ul
-          className="genreSelect-ul"
-          id="ul"
-          value={this.props.genre}
-          onClick={this.handleChange}
-        >
+        <ul className="genreSelect-ul">
           {this.props.genres.map((genre) => (
-            <li key={genre.id} value={genre.id} className="genreSelect-li" onClick={this.onClick}>
+            <li key={genre.id} value={genre.id} className={genre.id === this.props.genre ? "genreSelect-li selected" : "genreSelect-li"} onClick={() => {
+              this.handleChange(genre.id)
+            }}>
               {genre.name}
             </li>
           ))}
