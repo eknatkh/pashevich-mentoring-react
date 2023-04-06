@@ -6,22 +6,21 @@ class SearchForm extends React.Component {
     this.state = { query: props.searchQuery };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ query: event.target.value });
   }
 
-  handleKeyDown(event) {
-    if (event.key === "Enter") {
-      this.props.onSearch(this.state.query);
-    }
+  handleSubmit(event) {
+    this.props.onSearch(this.state.query);
+    event.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit={this.props.onSearch(this.state.query)}>
+      <form onSubmit={this.handleSubmit}>
         <p className="searchForm-title">FIND YOUR MOVIE</p>
         <input
           className="searchForm-input"
@@ -29,7 +28,6 @@ class SearchForm extends React.Component {
           placeholder="What do you want to watch?"
           value={this.state.query}
           onChange={this.handleChange}
-          onKeyDown={this.handleKeyDown}
         />
         <input className="searchForm-button" type="submit" value="Search" />
       </form>
