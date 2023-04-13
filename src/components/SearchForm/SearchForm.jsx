@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -33,6 +34,10 @@ class SearchForm extends React.Component {
       </form>
     );
   }
+}
+
+SearchForm.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
 }
 
 export default SearchForm;

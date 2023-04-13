@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, screen, render } from "@testing-library/react";
 import '@testing-library/jest-dom'
-import GenreSelect from "../components/GenreSelect";
+import GenreSelect from "../components/GenreSelect/GenreSelect";
 
 describe("GenreSelect test", () => {
 

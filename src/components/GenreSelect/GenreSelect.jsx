@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class GenreSelect extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class GenreSelect extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <ul className="genreSelect-ul">
           {this.props.genres.map((genre) => (
             <li key={genre.id} value={genre.id} className={genre.id === this.props.genre ? "genreSelect-li selected" : "genreSelect-li"} onClick={() => {
@@ -23,9 +24,25 @@ class GenreSelect extends React.Component {
             </li>
           ))}
         </ul>
-      </div>
+      </>
     );
   }
+}
+
+GenreSelect.propTypes = {
+  genre: PropTypes.number.isRequired,
+  genres: PropTypes.array.isRequired,
+}
+
+GenreSelect.defaultProps = {
+  genre: 1,
+  genres: [
+    { id: 1, name: "ALL" },
+    { id: 2, name: "DOCUMENTARY" },
+    { id: 3, name: "COMEDY" },
+    { id: 4, name: "HORROR" },
+    { id: 5, name: "CRIME" },
+  ]
 }
 
 export default GenreSelect;
