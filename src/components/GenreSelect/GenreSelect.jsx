@@ -32,6 +32,7 @@ class GenreSelect extends React.Component {
 GenreSelect.propTypes = {
   genre: PropTypes.number.isRequired,
   genres: PropTypes.array.isRequired,
+  onSelect: PropTypes.func,
 }
 
 GenreSelect.defaultProps = {

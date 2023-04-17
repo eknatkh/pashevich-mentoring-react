@@ -2,7 +2,7 @@ import GenreSelect from "./GenreSelect";
 import "./style.css"
 
 export default {
-    title : "GenreSelect",
+    title: "GenreSelect",
     component: GenreSelect,
     argTypes: {
         genre : {
@@ -15,16 +15,12 @@ export default {
         }
     },
     parameters: {
-        controls: { expanded: true },
+        controls: { expanded: true }
     },
 };
 
-const someFunction = (id) => {
-    alert(id);
-};
-  
 
-const Template = (args) => <GenreSelect {...args}/>
+const Template = (args) => <GenreSelect {...args} />
 
 export const Default = Template.bind({});
 Default.args = {

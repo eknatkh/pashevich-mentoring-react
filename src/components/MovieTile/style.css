@@ -1,0 +1,6 @@
+.movieTile-year {
+    box-sizing: border-box;
+    border: 1px solid #979797;
+    border-radius: 4px;
+    color: red;
+}

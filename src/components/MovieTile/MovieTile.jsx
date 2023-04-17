@@ -8,13 +8,13 @@ class MovieTile extends React.Component {
 
   render() {
     const movie = this.props.movieInfo;
+    const genresString = movie.genres.join();
 
     return (
       <>
         <img src={movie.imageUrl} alt={movie.imageUrl} />
-        <p>{movie.name} {movie.releaseYear}</p>
-        <p>{movie.rating} {movie.duration}</p>
-        <p>{movie.description}</p>
+        <p>{movie.name} <span className="movieTile-year">{movie.releaseYear}</span></p>
+        <p>{genresString}</p>
       </>
     );
   }
@@ -23,10 +23,8 @@ class MovieTile extends React.Component {
 export default MovieTile;
 
 MovieTile.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  releaseYear: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  duration: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  name: PropTypes.string,
+  releaseYear: PropTypes.number,
+  genres: PropTypes.array,
 }
