@@ -5,4 +5,8 @@ export default {
     component: SortControl
 }
 
-export const Default = () => <SortControl sortOrder="title" />
+const selectSortOrder = () => {
+    console.log("clicked");
+}
+
+export const Default = () => <SortControl sortOrder="title" onSelect={selectSortOrder} />

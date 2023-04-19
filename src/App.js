@@ -8,6 +8,7 @@ import "./components/Counter/style.css";
 import "./components/SearchForm/style.css";
 import "./components/GenreSelect/style.css";
 import "./components/MovieList/style.css";
+import "./components/MovieTile/style.css";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 import "./components/MovieDetails/style.css";
 import SortControl from "./components/SortControl/SortControl";

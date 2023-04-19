@@ -23,8 +23,10 @@ class MovieTile extends React.Component {
 export default MovieTile;
 
 MovieTile.propTypes = {
-  imageUrl: PropTypes.string,
-  name: PropTypes.string,
-  releaseYear: PropTypes.number,
-  genres: PropTypes.array,
-}
+  movieInfo: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    releaseYear: PropTypes.number,
+    genres: PropTypes.arrayOf(PropTypes.string),
+  })
+};

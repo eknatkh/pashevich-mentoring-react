@@ -8,7 +8,7 @@ class MovieDetails extends React.Component {
 
   render() {
     const movie = this.props.movieInfo;
-    const genres = movie.genres.join();
+    const genresString = movie.genres.join();
 
     return (
       <div className="movieDetails">
@@ -20,7 +20,7 @@ class MovieDetails extends React.Component {
         <p className="movieDetails-name-rating">
           {movie.name} <span>{movie.rating}</span>
         </p>
-        <p className="movieDetails-genres">{genres}</p>
+        <p className="movieDetails-genres">{genresString}</p>
         <p className="movieDetails-year-duration">
           {movie.releaseYear} <span>{movie.duration}</span>
         </p>
@@ -33,10 +33,13 @@ class MovieDetails extends React.Component {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  imageUrl: PropTypes.string,
-  name: PropTypes.string,
-  releaseYear: PropTypes.number,
-  rating: PropTypes.number,
-  duration: PropTypes.string,
-  description: PropTypes.string,
+  movieInfo: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    releaseYear: PropTypes.number,
+    rating: PropTypes.number,
+    duration: PropTypes.string,
+    description: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+  })
 };

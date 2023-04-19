@@ -30,8 +30,8 @@ class GenreSelect extends React.Component {
 }
 
 GenreSelect.propTypes = {
-  genre: PropTypes.number.isRequired,
-  genres: PropTypes.array.isRequired,
+  genre: PropTypes.number,
+  genres: PropTypes.array,
   onSelect: PropTypes.func,
 }
 
