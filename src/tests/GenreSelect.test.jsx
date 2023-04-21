@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, screen, render } from "@testing-library/react";
 import '@testing-library/jest-dom'
-import GenreSelect from "../components/GenreSelect";
+import GenreSelect from "../components/GenreSelect/GenreSelect";
 
 describe("GenreSelect test", () => {
 
@@ -16,7 +16,7 @@ describe("GenreSelect test", () => {
     const onSelect = jest.fn();
 
     test("renders all genres passed in props", () => {
-        render(<GenreSelect genre="" genres={genres} onSelect={onSelect} />);
+        render(<GenreSelect genre={1} genres={genres} onSelect={onSelect} />);
         const list = screen.getByRole("list");
         expect(list).toContainHTML("ALL");
         expect(list).toContainHTML("DOCUMENTARY");
@@ -32,7 +32,7 @@ describe("GenreSelect test", () => {
     })
 
     test("after click genre button callback onChange called with correct argument", () => {
-        render(<GenreSelect genre={""} genres={genres} onSelect={onSelect}/>);
+        render(<GenreSelect genre={1} genres={genres} onSelect={onSelect}/>);
         const allButton = screen.getByText(/all/i);
         fireEvent.click(allButton);
         expect(onSelect).toHaveBeenCalled();

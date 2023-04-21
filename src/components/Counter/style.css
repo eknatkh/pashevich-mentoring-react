@@ -1,0 +1,13 @@
+.counter-cmp {
+    width: 200px;
+    text-align: center;
+    background-color: azure;
+    border: 2px solid;
+    margin: 10px;
+    padding: 10px;
+}
+  
+.counter-button {
+    background-color: aliceblue;
+    color: black;
+}

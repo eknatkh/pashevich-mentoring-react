@@ -1,0 +1,13 @@
+.movieList-ul {
+    list-style-type:none;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    width: 100%;
+
+}
+
+.movieList-ul .movieList-li {
+    padding: 25px;
+    width: 30%;
+}

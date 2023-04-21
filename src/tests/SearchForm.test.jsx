@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, screen, render } from "@testing-library/react";
 import '@testing-library/jest-dom';
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../components/SearchForm/SearchForm";
 import userEvent from "@testing-library/user-event";
 import { act } from 'react-dom/test-utils';
 
