@@ -1,27 +1,31 @@
+.searchForm {
+  text-align: center;
+  background-color: grey;
+}
+
 .searchForm-input {
-    background: rgba(50, 50, 50, 0.8);
-    mix-blend-mode: normal;
-    opacity: 0.7;
-    border-radius: 4px;
-  }
-  
-  .searchForm-button {
-    background: #f65261;
-    border-radius: 4px;
-  }
-  
-  .searchForm-title {
-    width: 392px;
-    height: 49px;
-    left: 178px;
-    top: 155px;
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 40px;
-    line-height: 49px;
-    text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #ffffff;
-  }
+  width: 50%;
+  height: 30px;
+  background: rgba(50, 50, 50, 0.8);
+  mix-blend-mode: normal;
+  opacity: 0.7;
+  border-radius: 4px;
+}
+
+.searchForm-button {
+  height: 30px;
+  background: #f65261;
+  border-radius: 4px;
+}
+
+.searchForm-title {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 49px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}

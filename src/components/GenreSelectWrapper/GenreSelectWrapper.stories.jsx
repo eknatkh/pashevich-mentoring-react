@@ -1,4 +1,3 @@
-import GenreSelect from "../GenreSelect/GenreSelect";
 import GenreSelectWrapper from "./GenreSelectWrapper"
 import "./style.css";
 
@@ -21,14 +20,3 @@ Default.args = {
     ],
     initialGenreId: 1,
 }
-
-// export const Shortened = Template.bind({});
-// Shortened.args = {
-//     genre: 2,
-//     genres: [
-//         {id: 1, name: "ALL"},
-//         {id: 2, name: "FILM"},
-//         {id: 3, name: "CARTOON"},
-//     ],
-//     onSelect: () => console.log("selected"),
-// }
