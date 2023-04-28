@@ -22,5 +22,5 @@ const Template = (args) => <MovieForm {...args} />
 export const Default = Template.bind({});
 Default.args = {
     movieInfo: info,
-    title: "ADD MOVIE",
+    onSubmit: (event) => event.preventDefault(),
 }

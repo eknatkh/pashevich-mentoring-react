@@ -1,6 +1,7 @@
 import Dialog from "./Dialog";
 import MovieForm from "../MovieForm/MovieForm";
 import "../MovieForm/style.css";
+import "../Dialog/style.css"
 
 export default {
     tittle: "Edit Movie",
@@ -30,6 +31,6 @@ const Template = (args) =>
 export const Default = Template.bind({});
 Default.args = {
     title: "EDIT MOVIE",
-    show: true,
+    active: true,
     movieInfo: info,
 }

@@ -1,4 +1,5 @@
 import Dialog from "./Dialog";
+import "../Dialog/style.css"
 
 export default {
     tittle: "Delete Movie",
@@ -16,5 +17,5 @@ const Template = (args) =>
 export const Default = Template.bind({});
 Default.args = {
     title: "DELETE MOVIE",
-    show: true,
+    active: true,
 }

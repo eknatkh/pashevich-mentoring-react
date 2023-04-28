@@ -9,9 +9,9 @@ import "../MovieList/style.css";
 import "../MovieTile/style.css";
 import "../MovieDetails/style.css";
 import "../MovieForm/style.css";
+import "../Dialog/style.css";
 import Dialog from "../Dialog/Dialog";
 import MovieForm from "../MovieForm/MovieForm";
-import Modal from "../Dialog/Modal";
 
 
 function MovieListPage() {
@@ -98,13 +98,8 @@ function MovieListPage() {
 
   const submitMovieForm = (event) => {
     console.log("MovieForm submitted");
-    // Object.fromEntries(new FormData(event.target));
-    event.preventDefault();
-  }
-
-  const showModalWindow = () => {
-    console.log("show/hide modal");
-    setShowModal(showModal => !showModal);
+    Object.fromEntries(new FormData(event.target));
+    // event.preventDefault();
   }
 
   return (
@@ -113,11 +108,8 @@ function MovieListPage() {
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
       <SortControl sortOrder="title" onSelect={selectSortOrder} />
       <MovieList moviesInfo={moviesInfo} onClick={clickMovieTile} />
-
-      {/* <Dialog title="Title here" showModal={showModalWindow} show={showModal} onClose={onClose}>
-        <Modal title="Modal component" onClose={onClose}/>
-      </Dialog> */}
-      <Dialog title="ADD MOVIE" showModal={showModalWindow} show={showModal} onClose={onClose}>
+      
+      <Dialog title="ADD MOVIE" active={showModal} setActive={setShowModal}>
         <MovieForm onSubmit={submitMovieForm}/>
       </Dialog>
     </>

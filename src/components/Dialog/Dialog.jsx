@@ -1,19 +1,44 @@
-import React, { useState } from "react";
-import Modal from "./Modal";
-import MovieForm from "../MovieForm/MovieForm";
-import { createPortal } from "react-dom";
 import { Portal } from "react-portal";
+import PropTypes from "prop-types";
 
+const Dialog = ({title, active, setActive, children}) => {
+  return (
+    <div className="dialog">
+      <button
+        className="dialog-button"
+        onClick={() => setActive(!active)}
+      >
+        {title}
+      </button>
+      {active && (
+        <Portal>
+          <div className="dialog-children">
+            <b
+              className="dialog-close-icon"
+              onClick={() => setActive(false)}
+            >
+              X
+            </b>
+            {children}
+          </div>
+        </Portal>
+      )}
+    </div>
+  );
+};
 
-const Dialog = (props) => {
+Dialog.propTypes = {
+  title: PropTypes.string,
+  active: PropTypes.bool,
+  setActive: PropTypes.func,
+  children: PropTypes.node,
+};
 
-    return(
-        <div>
-            <button onClick={props.showModal}>{props.title}</button> 
-            {/* {props.show && createPortal(props.children, document.body)} */}
-            {props.show && <Portal>{props.children}</Portal>}
-        </div>
-    );
-}
+Dialog.defaultProps = {
+  title: "Modal dialog",
+  active: false,
+  setActive: () => {},
+  children: null,
+};
 
 export default Dialog;
