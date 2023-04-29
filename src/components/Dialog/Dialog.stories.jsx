@@ -1,4 +1,5 @@
 import Dialog from "./Dialog";
+import "./style.css";
 
 export default {
     title: "Dialog",
@@ -9,6 +10,5 @@ const Template = (args) => <Dialog {...args} />
 
 export const Default = Template.bind({});
 Default.args = {
-    title: "Dialog",
-    show: true,
+    title: "Dialog name",
 }

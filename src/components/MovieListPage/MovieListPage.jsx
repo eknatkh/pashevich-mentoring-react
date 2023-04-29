@@ -109,9 +109,9 @@ function MovieListPage() {
       <SortControl sortOrder="title" onSelect={selectSortOrder} />
       <MovieList moviesInfo={moviesInfo} onClick={clickMovieTile} />
       
-      <Dialog title="ADD MOVIE" active={showModal} setActive={setShowModal}>
+      {/* <Dialog title="ADD MOVIE" onClose={() => setShowModal(false)}>
         <MovieForm onSubmit={submitMovieForm}/>
-      </Dialog>
+      </Dialog> */}
     </>
   );
 }
