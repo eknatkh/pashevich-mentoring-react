@@ -32,7 +32,7 @@ const Template = (args) => {
         <div>
             <button className="dialog-button" onClick={handleButton}>{args.title}</button>
             {isActive && (
-                <Dialog title="EDIT MOVIE" onClose={() => setIsActive(false)} >
+                <Dialog title={args.title} onClose={() => setIsActive(false)} >
                     <MovieForm movieInfo={info} />
                 </Dialog>
             )}

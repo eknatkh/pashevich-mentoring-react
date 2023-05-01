@@ -18,7 +18,7 @@ const Dialog = ({title, onClose, children}) => {
 };
 
 Dialog.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   onClose: PropTypes.func,
   children: PropTypes.node,
 };
