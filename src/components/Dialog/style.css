@@ -1,0 +1,25 @@
+.dialog-children {
+    position: fixed;
+    top: 20vh;
+    left: 5%;
+    width: 90%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 30; 
+}
+
+.dialog-button {
+}
+
+.dialog-close-icon {
+    position: relative;
+    left: 99%;
+}
+
+.dialog-close-icon:hover {
+    background-color: red;
+    transition: background-color 0.8s;
+    cursor: pointer;
+}

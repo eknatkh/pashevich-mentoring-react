@@ -21,7 +21,8 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      // <div ></>
+      <form className="searchForm" onSubmit={this.handleSubmit}>
         <p className="searchForm-title">FIND YOUR MOVIE</p>
         <input
           className="searchForm-input"

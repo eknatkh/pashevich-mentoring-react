@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from './App'
+import MovieListPage from "./components/MovieListPage/MovieListPage";
 
 ReactDOM.render(
-  <App />,
+  <MovieListPage />,
   document.getElementById('root')
 );
