@@ -21,17 +21,18 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      // <div ></>
       <form className="searchForm" onSubmit={this.handleSubmit}>
         <p className="searchForm-title">FIND YOUR MOVIE</p>
-        <input
-          className="searchForm-input"
-          type="search"
-          placeholder="What do you want to watch?"
-          value={this.state.query}
-          onChange={this.handleChange}
-        />
-        <input className="searchForm-button" type="submit" value="Search" />
+        <div className="searchForm-main">
+          <input
+            className="searchForm-input"
+            type="search"
+            placeholder="What do you want to watch?"
+            value={this.state.query}
+            onChange={this.handleChange}
+          />
+          <input className="searchForm-button" type="submit" value="Search" />
+        </div>
       </form>
     );
   }
