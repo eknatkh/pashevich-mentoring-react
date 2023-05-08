@@ -8,8 +8,8 @@ class GenreSelect extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(genreId) {
-    this.props.onSelect(genreId);
+  handleChange(genreName) {
+    this.props.onSelect(genreName);
   }
 
   render() {
@@ -17,8 +17,8 @@ class GenreSelect extends React.Component {
       <>
         <ul className="genreSelect-ul">
           {this.props.genres.map((genre) => (
-            <li key={genre.id} value={genre.id} className={genre.id === this.props.genre ? "genreSelect-li selected" : "genreSelect-li"} onClick={() => {
-              this.handleChange(genre.id)
+            <li key={genre.id} value={genre.id} className={genre.name === this.props.genre ? "genreSelect-li selected" : "genreSelect-li"} onClick={() => {
+              this.handleChange(genre.name)
             }}>
               {genre.name}
             </li>
