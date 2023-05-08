@@ -4,18 +4,17 @@ import PropTypes from "prop-types";
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { query: props.searchQuery };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ query: event.target.value });
+    this.props.onSearch(event.target.value);
   }
 
   handleSubmit(event) {
-    this.props.onSearch(this.state.query);
+    this.props.onSearch(this.props.searchQuery);
     event.preventDefault();
   }
 
@@ -28,7 +27,7 @@ class SearchForm extends React.Component {
             className="searchForm-input"
             type="search"
             placeholder="What do you want to watch?"
-            value={this.state.query}
+            value={this.props.searchQuery}
             onChange={this.handleChange}
           />
           <input className="searchForm-button" type="submit" value="Search" />

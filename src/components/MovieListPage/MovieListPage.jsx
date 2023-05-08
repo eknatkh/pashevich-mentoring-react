@@ -139,6 +139,15 @@ function MovieListPage() {
   const clickMovieTile = (id) => {
     console.log("You have clicked movie with id = " + id);
     setSelectedMovie(id);
+    const movies = moviesInfo.filter(movie => movie.id === id);
+    setIsFound(true);
+    setMovieInfo(movies[0]);
+    if (isFound) {
+      return (
+        <Dialog title="MOVIE DETAILS" onClose={() => setIsFound(false)} >
+            <MovieDetails movieInfo={movieInfo} />;
+        </Dialog>)
+    }
   };
 
   const selectSortOrder = (sortOrder) => {
