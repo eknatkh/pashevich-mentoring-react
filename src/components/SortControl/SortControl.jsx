@@ -21,7 +21,7 @@ class SortControl extends React.Component {
         <>
             SORT BY
             <select value={this.state.sortOrder} onChange={this.onChange}>
-                <option value="release date">RELEASE DATE</option>
+                <option value="release_date">RELEASE DATE</option>
                 <option value="title">TITLE</option>
             </select>
         </>);
