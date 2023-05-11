@@ -15,7 +15,7 @@ import Dialog from "../Dialog/Dialog";
 import MovieForm from "../MovieForm/MovieForm";
 import AddMovie from "../Dialog/AddMovie";
 import MovieDetails from "../MovieDetails/MovieDetails";
-import {getAll} from "../../services/MoviesApi";
+import { getAll } from "../../services/MoviesApi";
 import axios from "axios";
 
 function MovieListPage() {
@@ -38,7 +38,6 @@ function MovieListPage() {
   ];
 
   useEffect(() => {
-    console.log("Get all movies");
     axios
       .get("http://localhost:4000/movies")
       .then((response) => {
@@ -54,85 +53,57 @@ function MovieListPage() {
   }, []);
 
   useEffect(() => {
-    console.log("Search and filter movies");
-    if (genre === "All") {
-      console.log("genre: " + genre);
-      axios
-        .get("http://localhost:4000/movies", {
-          params: {
-            sortBy: sortOrder,
-            sortOrder: "asc",
-            searchBy: "title",
-            search: querySearch.trim().toLowerCase(),
-          },
-        })
-        .then((response) => {
-          const movies = response.data.data;
-          console.log(movies);
-          setMoviesInfo(movies);
-        });
-    } else {
-      axios
-        .get("http://localhost:4000/movies", {
-          params: {
-            sortBy: sortOrder,
-            sortOrder: "asc",
-            searchBy: "title",
-            search: querySearch.trim().toLowerCase(),
-            filter: genre,
-          },
-        })
-        .then((response) => {
-          const movies = response.data.data;
-          console.log(movies);
-          setMoviesInfo(movies);
-        });
-    }
+    axios
+      .get("http://localhost:4000/movies", {
+        params: {
+          sortBy: sortOrder,
+          sortOrder: "asc",
+          searchBy: "title",
+          search: querySearch.trim().toLowerCase(),
+          filter: genre !== "All" && genre,
+        },
+      })
+      .then((response) => {
+        const movies = response.data.data;
+        setMoviesInfo(movies);
+      });
   }, [querySearch, genre, sortOrder]);
 
   const searchMovie = (querySearch) => {
-    console.log("querySearch: " + querySearch);
     setQuerySearch(querySearch);
     const movieInfo = moviesInfo.filter(
       (movie) => movie.title.toLowerCase() === querySearch.trim().toLowerCase()
     );
-    console.log(movieInfo[0]);
     if (typeof movieInfo[0] === "undefined") {
-      console.log("movie not found");
       setIsFound(false);
     } else {
-      console.log("movie found");
       setIsFound(true);
       setMovieInfo(movieInfo[0]);
     }
   };
 
   const selectGenre = (genre) => {
-    console.log("genre = " + genre);
     setGenre(genre);
   };
 
   const clickMovieTile = (id) => {
-    console.log("You have clicked movie with id = " + id);
     setSelectedMovie(id);
     const movieUrl = "http://localhost:4000/movies/" + id;
     axios.get(movieUrl).then((response) => {
       const movie = response.data;
-      console.log(movie);
       setIsFound(true);
       setMovieInfo(movie);
     });
     if (isFound) {
-      return (
-        <Dialog title="MOVIE DETAILS" onClose={() => setIsFound(false)}>
-          <MovieDetails movieInfo={movieInfo} />;
-        </Dialog>
-      );
+      return showMovieDetails;
+      //   <Dialog title="MOVIE DETAILS" onClose={() => setIsFound(false)}>
+      //     <MovieDetails movieInfo={movieInfo} />;
+      //   </Dialog>
+      // );
     }
   };
 
   const selectSortOrder = (sortOrder) => {
-    console.log("sort by " + sortOrder);
     setSortOrder(sortOrder);
   };
 

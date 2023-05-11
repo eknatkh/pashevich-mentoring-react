@@ -8,12 +8,13 @@ class MovieDetails extends React.Component {
 
   render() {
     const movie = this.props.movieInfo;
-    let genresString;
-    if (typeof movie.genres === "undefined") {
-      genresString = "";
-    } else {
-      genresString = movie.genres.join();
-    }
+    // let genresString;
+    // if (typeof movie.genres === "undefined") {
+    //   genresString = "";
+    // } else {
+    //   genresString = movie.genres.join();
+    // }
+    const genresString = movie?.genres?.length ? movie.genres.join() : ''
 
     return (
       <div className="movieDetails">
