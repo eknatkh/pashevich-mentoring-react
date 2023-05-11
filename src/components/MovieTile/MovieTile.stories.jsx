@@ -7,9 +7,9 @@ export default {
 };
 
 const info = {
-  imageUrl: "./images/Inception.jpg",
-  name: "Inception",
-  releaseYear: 2011,
+  poster_path: "./images/Inception.jpg",
+  title: "Inception",
+  release_date: 2011,
   genres: ["Action & Adventure", "Sci-fi"],
 }
 

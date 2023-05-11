@@ -12,8 +12,8 @@ class MovieTile extends React.Component {
 
     return (
       <>
-        <img src={movie.imageUrl} alt={movie.imageUrl} />
-        <p>{movie.name} <span className="movieTile-year">{movie.releaseYear}</span></p>
+        <img src={movie.poster_path} alt={movie.poster_path} />
+        <p>{movie.title} <span className="movieTile-year">{movie.release_date}</span></p>
         <p>{genresString}</p>
       </>
     );
@@ -24,9 +24,9 @@ export default MovieTile;
 
 MovieTile.propTypes = {
   movieInfo: PropTypes.shape({
-    imageUrl: PropTypes.string,
-    name: PropTypes.string,
-    releaseYear: PropTypes.number,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
     genres: PropTypes.arrayOf(PropTypes.string),
   })
 };
