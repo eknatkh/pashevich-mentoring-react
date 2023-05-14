@@ -47,9 +47,6 @@ function MovieListPage() {
       .catch((error) => {
         console.log("Error while getting movies :" + error);
       });
-    // const movies = getAll();
-    // console.log("from service: " + movies);
-    // setMoviesInfo(movies);
   }, []);
 
   useEffect(() => {
@@ -60,7 +57,7 @@ function MovieListPage() {
           sortOrder: "asc",
           searchBy: "title",
           search: querySearch.trim().toLowerCase(),
-          filter: genre !== "All" && genre,
+          filter: genre !== "All" ? genre : null,
         },
       })
       .then((response) => {
@@ -96,10 +93,6 @@ function MovieListPage() {
     });
     if (isFound) {
       return showMovieDetails;
-      //   <Dialog title="MOVIE DETAILS" onClose={() => setIsFound(false)}>
-      //     <MovieDetails movieInfo={movieInfo} />;
-      //   </Dialog>
-      // );
     }
   };
 
