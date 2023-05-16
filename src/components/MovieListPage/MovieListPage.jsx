@@ -12,16 +12,23 @@ import "../MovieDetails/style.css";
 import "../MovieForm/style.css";
 import "../Dialog/style.css";
 import Dialog from "../Dialog/Dialog";
-import MovieForm from "../MovieForm/MovieForm";
 import AddMovie from "../Dialog/AddMovie";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import { getAll } from "../../services/MoviesApi";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+import { act } from "react-test-renderer";
 
 function MovieListPage() {
-  const [querySearch, setQuerySearch] = useState("");
-  const [sortOrder, setSortOrder] = useState("title");
-  const [genre, setGenre] = useState("All");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
+  const sorting = searchParams.get("sorting") || "title";
+  const activeGenre = searchParams.get("activeGenre") || "All";
+  console.log(query + " " + sorting + " " + activeGenre);
+
+  const [querySearch, setQuerySearch] = useState(query);
+  const [sortOrder, setSortOrder] = useState(sorting);
+  const [genre, setGenre] = useState(activeGenre);
   const [moviesInfo, setMoviesInfo] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [isFound, setIsFound] = useState(false);
@@ -36,6 +43,10 @@ function MovieListPage() {
     { id: 6, name: "Family" },
     { id: 7, name: "Comedy" },
   ];
+
+  useEffect(() => {
+    setSearchParams({query: `${querySearch}`, sorting: `${sortOrder}`, activeGenre: `${genre}`});
+  }, [querySearch, sortOrder, genre]);
 
   useEffect(() => {
     axios
@@ -91,9 +102,7 @@ function MovieListPage() {
       setIsFound(true);
       setMovieInfo(movie);
     });
-    if (isFound) {
-      return showMovieDetails;
-    }
+    return showMovieDetails;
   };
 
   const selectSortOrder = (sortOrder) => {
@@ -116,7 +125,7 @@ function MovieListPage() {
       <SearchForm searchQuery={querySearch} onSearch={searchMovie} />
       {showMovieDetails()}
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
-      <SortControl sortOrder="title" onSelect={selectSortOrder} />
+      <SortControl sortOrder={sorting} onSelect={selectSortOrder} />
       <MovieList moviesInfo={moviesInfo} onClick={clickMovieTile} />
     </div>
   );
