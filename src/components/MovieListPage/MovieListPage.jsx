@@ -16,15 +16,13 @@ import AddMovie from "../Dialog/AddMovie";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import { getAll } from "../../services/MoviesApi";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
-import { act } from "react-test-renderer";
+import { Outlet, useSearchParams } from "react-router-dom";
 
 function MovieListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
   const sorting = searchParams.get("sorting") || "title";
   const activeGenre = searchParams.get("activeGenre") || "All";
-  console.log(query + " " + sorting + " " + activeGenre);
 
   const [querySearch, setQuerySearch] = useState(query);
   const [sortOrder, setSortOrder] = useState(sorting);
@@ -116,14 +114,18 @@ function MovieListPage() {
           <MovieDetails movieInfo={movieInfo} />;
         </Dialog>
       );
+    } else {
+      return (
+        <SearchForm searchQuery={querySearch} onSearch={searchMovie} />
+      )
     }
   };
 
   return (
     <div className="movieListPage">
       <AddMovie title="ADD MOVIE" />
-      <SearchForm searchQuery={querySearch} onSearch={searchMovie} />
-      {showMovieDetails()}
+      {/* {showMovieDetails()} */}
+      <Outlet />
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
       <SortControl sortOrder={sorting} onSelect={selectSortOrder} />
       <MovieList moviesInfo={moviesInfo} onClick={clickMovieTile} />

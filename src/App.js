@@ -10,10 +10,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MovieListPage />}>
-            <Route index element={<MovieListPage />} />
-            {/* <Route path="search" element={<MovieListPage />} /> */}
-            <Route path="*" element={<NotFoundPage />} />
+            <Route index element={<p>INDEX</p>} />
+            <Route path="/:movieId" element={<p>MOVIE ID</p>} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
