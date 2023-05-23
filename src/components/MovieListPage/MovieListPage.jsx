@@ -124,8 +124,8 @@ function MovieListPage() {
   return (
     <div className="movieListPage">
       <AddMovie title="ADD MOVIE" />
-      {/* {showMovieDetails()} */}
-      <Outlet />
+      {showMovieDetails()}
+      {/* <Outlet /> */}
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
       <SortControl sortOrder={sorting} onSelect={selectSortOrder} />
       <MovieList moviesInfo={moviesInfo} onClick={clickMovieTile} />
