@@ -11,9 +11,7 @@ import "../MovieTile/style.css";
 import "../MovieDetails/style.css";
 import "../MovieForm/style.css";
 import "../Dialog/style.css";
-import Dialog from "../Dialog/Dialog";
 import AddMovie from "../Dialog/AddMovie";
-import MovieDetails from "../MovieDetails/MovieDetails";
 import { getAll } from "../../services/MoviesApi";
 import axios from "axios";
 import { Outlet, useSearchParams, useNavigate, createSearchParams, useParams } from "react-router-dom";
@@ -28,9 +26,6 @@ function MovieListPage() {
   const [sortOrder, setSortOrder] = useState(sortBy);
   const [genre, setGenre] = useState(activeGenre);
   const [moviesInfo, setMoviesInfo] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [isFound, setIsFound] = useState(false);
-  const [movieInfo, setMovieInfo] = useState({});
   const navigate = useNavigate();
 
   const genres = [
@@ -84,6 +79,7 @@ function MovieListPage() {
     
     if (typeof movieInfo[0] !== "undefined") {
       const requestParams = `${createSearchParams(searchParams)}`
+      setQuerySearch("")
       navigate({
         pathname: `/${movieInfo[0].id}`,
         search: requestParams
