@@ -1,22 +1,28 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MovieListPage from "./components/MovieListPage/MovieListPage";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import MovieDetails from "./components/MovieDetails/MovieDetails";
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MovieListPage />,
+      errorElement: <NotFoundPage />,
+      children: [
+        {
+          path: ":movieId",
+          element: <MovieDetails />,
+          errorElement: <NotFoundPage />,
+        },
+      ],
+    },
+  ]);
+
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MovieListPage />}>
-            <Route index element={<p>INDEX</p>} />
-            <Route path="/:movieId" element={<p>MOVIE ID</p>} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+      <RouterProvider router={router} />
   );
 }
 

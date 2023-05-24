@@ -16,21 +16,22 @@ import AddMovie from "../Dialog/AddMovie";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import { getAll } from "../../services/MoviesApi";
 import axios from "axios";
-import { Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams, useNavigate, createSearchParams, useParams } from "react-router-dom";
 
 function MovieListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
-  const sorting = searchParams.get("sorting") || "title";
+  const sortBy = searchParams.get("sortBy") || "title";
   const activeGenre = searchParams.get("activeGenre") || "All";
 
   const [querySearch, setQuerySearch] = useState(query);
-  const [sortOrder, setSortOrder] = useState(sorting);
+  const [sortOrder, setSortOrder] = useState(sortBy);
   const [genre, setGenre] = useState(activeGenre);
   const [moviesInfo, setMoviesInfo] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [isFound, setIsFound] = useState(false);
   const [movieInfo, setMovieInfo] = useState({});
+  const navigate = useNavigate();
 
   const genres = [
     { id: 1, name: "All" },
@@ -43,7 +44,7 @@ function MovieListPage() {
   ];
 
   useEffect(() => {
-    setSearchParams({query: `${querySearch}`, sorting: `${sortOrder}`, activeGenre: `${genre}`});
+    setSearchParams({query: `${querySearch}`, sortBy: `${sortOrder}`, activeGenre: `${genre}`});
   }, [querySearch, sortOrder, genre]);
 
   useEffect(() => {
@@ -80,11 +81,13 @@ function MovieListPage() {
     const movieInfo = moviesInfo.filter(
       (movie) => movie.title.toLowerCase() === querySearch.trim().toLowerCase()
     );
-    if (typeof movieInfo[0] === "undefined") {
-      setIsFound(false);
-    } else {
-      setIsFound(true);
-      setMovieInfo(movieInfo[0]);
+    
+    if (typeof movieInfo[0] !== "undefined") {
+      const requestParams = `${createSearchParams(searchParams)}`
+      navigate({
+        pathname: `/${movieInfo[0].id}`,
+        search: requestParams
+      })
     }
   };
 
@@ -93,26 +96,23 @@ function MovieListPage() {
   };
 
   const clickMovieTile = (id) => {
-    setSelectedMovie(id);
-    const movieUrl = "http://localhost:4000/movies/" + id;
-    axios.get(movieUrl).then((response) => {
-      const movie = response.data;
-      setIsFound(true);
-      setMovieInfo(movie);
-    });
-    return showMovieDetails;
+    const requestParams = `${createSearchParams(searchParams)}`
+    navigate({
+      pathname: `/${id}`,
+      search: requestParams
+    })
   };
 
   const selectSortOrder = (sortOrder) => {
     setSortOrder(sortOrder);
   };
 
+  let {movieId} = useParams();
+
   const showMovieDetails = () => {
-    if (isFound) {
+    if (movieId) {
       return (
-        <Dialog title="MOVIE DETAILS" onClose={() => setIsFound(false)}>
-          <MovieDetails movieInfo={movieInfo} />;
-        </Dialog>
+        <Outlet/>
       );
     } else {
       return (
@@ -125,9 +125,8 @@ function MovieListPage() {
     <div className="movieListPage">
       <AddMovie title="ADD MOVIE" />
       {showMovieDetails()}
-      {/* <Outlet /> */}
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
-      <SortControl sortOrder={sorting} onSelect={selectSortOrder} />
+      <SortControl sortOrder={sortBy} onSelect={selectSortOrder} />
       <MovieList moviesInfo={moviesInfo} onClick={clickMovieTile} />
     </div>
   );
