@@ -27,7 +27,6 @@ const AddMovie = ({title, isShowed}) => {
             })
             .then((response) => {
                 console.log(response)
-                console.log(response.data.id)
                 const requestParams = `${createSearchParams(searchParams)}`
                 navigate({
                     pathname: `/${response.data.id}`,
@@ -36,7 +35,7 @@ const AddMovie = ({title, isShowed}) => {
                 setIsActive(false);
             })
             .catch((error) => {
-                console.log(error)
+                console.error(error)
             })
     }
 

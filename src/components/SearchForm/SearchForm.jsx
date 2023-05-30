@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Outlet } from "react-router";
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -20,19 +21,22 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      <form className="searchForm" onSubmit={this.handleSubmit}>
-        <p className="searchForm-title">FIND YOUR MOVIE</p>
-        <div className="searchForm-main">
-          <input
-            className="searchForm-input"
-            type="search"
-            placeholder="What do you want to watch?"
-            value={this.props.searchQuery}
-            onChange={this.handleChange}
-          />
-          <input className="searchForm-button" type="submit" value="Search" />
-        </div>
-      </form>
+      <>
+        <form className="searchForm" onSubmit={this.handleSubmit}>
+          <p className="searchForm-title">FIND YOUR MOVIE</p>
+          <div className="searchForm-main">
+            <input
+              className="searchForm-input"
+              type="search"
+              placeholder="What do you want to watch?"
+              value={this.props.searchQuery}
+              onChange={this.handleChange}
+            />
+            <input className="searchForm-button" type="submit" value="Search" />
+          </div>
+        </form>
+        <Outlet />
+      </>
     );
   }
 }
