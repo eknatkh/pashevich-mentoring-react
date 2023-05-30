@@ -77,7 +77,7 @@ function MovieListPage() {
       (movie) => movie.title.toLowerCase() === querySearch.trim().toLowerCase()
     );
     
-    if (typeof movieInfo[0] !== "undefined") {
+    if (movieInfo.length && movieInfo[0]?.id) {
       const requestParams = `${createSearchParams(searchParams)}`
       setQuerySearch("")
       navigate({
@@ -119,7 +119,7 @@ function MovieListPage() {
 
   return (
     <div className="movieListPage">
-      <AddMovie title="ADD MOVIE" />
+      <AddMovie title="ADD MOVIE" isShowed={false}/>
       {showMovieDetails()}
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
       <SortControl sortOrder={sortBy} onSelect={selectSortOrder} />
