@@ -4,7 +4,7 @@ import MovieForm from "../MovieForm/MovieForm";
 import axios from "axios";
 import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
 
-const AddMovie = ({title, isShowed}) => {
+const AddMovie = ({isShowed}) => {
     const [isActive, setIsActive] = useState(isShowed);
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
@@ -41,7 +41,7 @@ const AddMovie = ({title, isShowed}) => {
 
     return (
         <div>
-            <button className="dialog-button" onClick={handleButton}>{title}</button>
+            <button className="dialog-button" onClick={handleButton}>ADD MOVIE</button>
             {isActive && (
                 <Dialog title="ADD MOVIE" onClose={() => setIsActive(false)} >
                     <MovieForm movieInfo={{}} onSubmit={handleSubmit} />

@@ -119,7 +119,7 @@ function MovieListPage() {
 
   return (
     <div className="movieListPage">
-      <AddMovie title="ADD MOVIE" isShowed={false}/>
+      <AddMovie isShowed={false}/>
       {showMovieDetails()}
       <GenreSelect genre={genre} genres={genres} onSelect={selectGenre} />
       <SortControl sortOrder={sortBy} onSelect={selectSortOrder} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import axios from "axios";
 
 const MovieDetails = () => {
@@ -35,6 +35,7 @@ const MovieDetails = () => {
         {movie.release_date} <span>{movie.runtime}</span>
       </p>
       <p className="movieDetails-description">{movie.overview}</p>
+      <Outlet />
     </div>
   );
 };

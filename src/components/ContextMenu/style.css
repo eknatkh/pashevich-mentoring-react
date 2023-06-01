@@ -1,0 +1,10 @@
+.menu-li {
+    color: #F65261;
+    list-style-type: circle;
+    font-size: 24px;
+}
+
+.menu-close {
+    color: rgb(44, 214, 163);
+    list-style-type: none;
+}

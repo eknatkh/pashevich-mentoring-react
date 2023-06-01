@@ -1,9 +1,10 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, useParams } from "react-router-dom";
 import MovieListPage from "./components/MovieListPage/MovieListPage";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 import AddMovie from "./components/Dialog/AddMovie";
+import EditMovie from "./components/Dialog/EditMovie";
 
 function App() {
 
@@ -22,6 +23,13 @@ function App() {
           path: ":movieId",
           element: <MovieDetails />,
           errorElement: <NotFoundPage />,
+          children: [
+            {
+              path: "edit",
+              element: <EditMovie isShowed={true} />,
+              errorElement: <NotFoundPage />,
+            }
+          ]
         },
       ],
     },
